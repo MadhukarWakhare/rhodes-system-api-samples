@@ -1,7 +1,7 @@
 <div class="toolbar">
-	<h1 id="pageTitle">
-		New Contact
-	</h1>
+  <h1 id="pageTitle">
+    New Contact
+  </h1>
 </div>
 <form title="New Contact"
    class="panel"
@@ -9,18 +9,25 @@
    method="POST"
    action="<%=url_for(:action => :create)%>">
   <fieldset>
+
+  <% possibleValues = ["prefix", "first_name", "middle_name", "last_name", "suffix",
+    "nickname","birthday", "anniversary", "created", "updated","company_name",
+    "job_title", "assistant_name", "assistant_number","spouse_name", "person_note",
+    "street_address_1", "city_1", "state_1", "zip_1", "country_1",
+    "street_address_2", "city_2", "state_2", "zip_2", "country_2",
+    "street_address_3", "city_3", "state_3", "zip_3", "country_3",
+    "email_address", "home_email_address", "other_email_address",
+    "business_number", "home_number", "mobile_number", "main_number", "pager_number",
+    "home_fax", "work_fax", "home_page"]
+
+  possibleValues.each do |value| %>
     <div class="row">
-      <label>First Name: </label>
-      <input type="text" name="contact[first_name]"/>
+      <label><%=value%>:</label>
+      <input type="text" name="contact[<%=value%>]"/>
     </div>
-    <div class="row">
-      <label>Last Name: </label>
-      <input type="text" name="contact[last_name]"/>
-    </div>
-    <div class="row">
-      <label>Mobile #: </label>
-      <input type="text" name="contact[mobile_number]"/>
-    </div>
+  <% end %>
+
+
   </fieldset>
   <input type="submit" value="Create"/>
 </form>

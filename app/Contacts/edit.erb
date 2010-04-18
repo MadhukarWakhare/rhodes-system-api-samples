@@ -1,7 +1,7 @@
 <div class="toolbar">
-	<h1 id="pageTitle">
-		Edit Contact
-	</h1>
+  <h1 id="pageTitle">
+    Edit Contact
+  </h1>
 </div>
 <form title="Edit Contact"
    class="panel"
@@ -9,35 +9,27 @@
    method="POST"
    action="<%=url_for(:action => :update)%>">
   <fieldset>
-    <input type="hidden" name="contact[id]" value="<%=@contact['id']%>"/>
+
+  <input type="hidden" name="contact[id]" value="<%=@contact['id']%>"/>
+
+  <% possibleValues = ["prefix", "first_name", "middle_name", "last_name", "suffix",
+    "nickname","birthday", "anniversary", "created", "updated","company_name",
+    "job_title", "assistant_name", "assistant_number","spouse_name", "person_note",
+    "street_address_1", "city_1", "state_1", "zip_1", "country_1",
+    "street_address_2", "city_2", "state_2", "zip_2", "country_2",
+    "street_address_3", "city_3", "state_3", "zip_3", "country_3",
+    "email_address", "home_email_address", "other_email_address",
+    "business_number", "home_number", "mobile_number", "main_number", "pager_number",
+    "home_fax", "work_fax", "home_page"]
+
+  possibleValues.each do |value| %>
     <div class="row">
-      <label>First Name: </label>
-      <input type="text" name="contact[first_name]" value="<%=@contact['first_name']%>"/>
-    </div>
-    <div class="row">
-      <label>Last Name: </label>
-      <input type="text" name="contact[last_name]" value="<%=@contact['last_name']%>"/>
-    </div>
-    <div class="row">
-      <label>Company: </label>
-      <input type="text" name="contact[company_name]" value="<%=@contact['company_name']%>"/>
-    </div>
-    <div class="row">
-      <label>Mobile #: </label>
-      <input type="text" name="contact[mobile_number]" value="<%=@contact['mobile_number']%>"/>
-    </div>
-    <div class="row">
-      <label>Home #: </label>
-      <input type="text" name="contact[home_number]" value="<%=@contact['home_number']%>"/>
-    </div>
-    <div class="row">
-      <label>Business #: </label>
-      <input type="text" name="contact[business_number]" value="<%=@contact['business_number']%>"/>
-    </div>
-    <div class="row">
-      <label>Email: </label>
-      <input type="text" name="contact[email_address]" value="<%=@contact['email_address']%>"/>
-    </div>
+      <label><%=value%>:</label>
+      <input type="text" name="contact[<%=value%>]" value="<%=@contact[value]%>"/>
+  </div>
+  <% end %>
+
+
   </fieldset>
   <input type="submit" value="Update"/>
   <div align="center">
