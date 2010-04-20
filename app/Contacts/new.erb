@@ -10,7 +10,12 @@
    action="<%=url_for(:action => :create)%>">
   <fieldset>
 
-  <% possibleValues = ["prefix", "first_name", "middle_name", "last_name", "suffix",
+  <%
+  possibleValues = ["first_name", "last_name", "mobile_number", "home_number",
+    "business_number", "email_address", "company_name"]
+
+  if System::get_property('platform') == "APPLE"
+    possibleValues = ["prefix", "first_name", "middle_name", "last_name", "suffix",
     "nickname","birthday", "anniversary", "created", "updated","company_name",
     "job_title", "assistant_name", "assistant_number","spouse_name", "person_note",
     "street_address_1", "city_1", "state_1", "zip_1", "country_1",
@@ -19,6 +24,7 @@
     "email_address", "home_email_address", "other_email_address",
     "business_number", "home_number", "mobile_number", "main_number", "pager_number",
     "home_fax", "work_fax", "home_page"]
+  end
 
   possibleValues.each do |value| %>
     <div class="row">
