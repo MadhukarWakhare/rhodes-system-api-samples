@@ -9,6 +9,11 @@
 	
 	<p>Your location using ruby api:</p>
 	<p>
+	<% if GeoLocation.known_position? %>
+	  <p>Ruby claims to know where you are. (GeoLocation.known_position? == true)</p>
+	<% else %>
+	  <p>Ruby doesn't know where you are. (GeoLocation.known_position? == false)</p>
+	<% end %>
 	<a href="/system/map?q=<%= GeoLocation.latitude.to_s+','+GeoLocation.longitude.to_s %>"><%= GeoLocation.latitude.abs.to_s + " " + (GeoLocation.latitude < 0 ? "South" : "North") + ", " +
 	GeoLocation.longitude.abs.to_s + " " + (GeoLocation.longitude < 0 ? "West" : "East") %></a>
 	</p>
