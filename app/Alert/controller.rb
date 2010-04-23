@@ -16,7 +16,7 @@ class AlertController < Rho::RhoController
 
   def show_popup2
     @flash = "Show popup page"
-    Alert.show_popup :title => "This is popup", :message => "Some message!",
+    Alert.show_popup :title => "This is popup", :message => "Some message!", :icon => :info,
       :buttons => ["Yes", "No", {:id => 'cancel', :title => "Cancel"}],
       :callback => url_for(:action => :popup_callback)
     render :action => :index
@@ -25,8 +25,7 @@ class AlertController < Rho::RhoController
   def popup_callback
     id = @params['button_id']
     title = @params['button_title']
-    index = @params['button_index']
-    puts "popup_callback: id: '#{id}', title: '#{title}', index: #{index}"
+    puts "popup_callback: id: '#{id}', title: '#{title}'"
     WebView.navigate url_for(:action => :index)
   end
   

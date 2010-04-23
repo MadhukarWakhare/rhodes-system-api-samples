@@ -25,5 +25,10 @@ KeepTrackOfLastVisitedPage = 0
 LastVisitedPage = ''
 MaxLogFileSize=0
 
-syncserver = 'http://dev.rhosync.rhohub.com/apps/SystemApiSamples/sources/'
+syncserver = 'http://rhodes-samples-server.heroku.com/application'
 sync_poll_interval=0
+
+full_screen = 0
+
+logserver = 'http://logserver.staging.rhohub.com/log_handler'
+logname=sas

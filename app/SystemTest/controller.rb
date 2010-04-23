@@ -13,4 +13,13 @@ class SystemTestController < Rho::RhoController
     WebView::refresh
   end
 
+  def app_exit
+    System.exit
+  end
+
+  def call_js
+    WebView.execute_js("test();", 0)
+    
+    redirect :action => :index
+  end  
 end
