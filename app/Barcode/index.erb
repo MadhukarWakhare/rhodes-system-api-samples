@@ -1,0 +1,7 @@
+<h3><%= @result%></h3>
+<div>
+	<br/>
+		<img src="/public/images/barcode.png" width='300px'></img>
+		<%= link_to '[Scan]', { :action => :scan_image, :query => {:file_name => Rho::RhoApplication::get_base_app_path()+ "/public/images/barcode.png"} }%><br/>
+	<br/>
+</div>

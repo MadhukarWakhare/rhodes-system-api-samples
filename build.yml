@@ -20,4 +20,4 @@ iphone:
   codesignidentity: ""
   entitlements: ""
   configuration: Debug
-extensions: ["rhodes_translator", "json"]
+extensions: ["rhodes_translator", "json", "zbar"]
