@@ -1,7 +1,13 @@
-<h3><%= @result%></h3>
+<h3><%= @message%></h3>
 <div>
+	<% if System::get_property('has_camera') %>
+    	<%= link_to '[Take a picture of barcode]', { :action => :scan_from_camera }%>
+	<% end %>
+
 	<br/>
 		<img src="/public/images/barcode.png" width='300px'></img>
-		<%= link_to '[Scan]', { :action => :scan_image, :query => {:file_name => Rho::RhoApplication::get_base_app_path()+ "/public/images/barcode.png"} }%><br/>
+		<%= link_to '[Scan]',
+		{ :action => :scan_image, 
+		  :query => {:file_name => Rho::RhoApplication::get_base_app_path()+ "/public/images/barcode.png"} }%> <br/>
 	<br/>
 </div>
